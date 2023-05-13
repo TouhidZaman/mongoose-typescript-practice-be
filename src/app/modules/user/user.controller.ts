@@ -10,9 +10,13 @@ export const createUser = async (
 ) => {
   try {
     const user = await createUserToBD(req.body);
+
+    //getFullName is now available after adding instance method to our userSchema
+    const fullName = user.getFullName();
+
     const response: IResponse<IUser> = {
       status: "success",
-      message: `User ${user.name.firstName} ${user.name.lastName} created successfully`,
+      message: `User ${fullName} created successfully`,
       data: user,
     };
     res.status(200).json(response);

@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
-import { IUser } from "./user.interfaces";
+import { IUser, IUserMethods, UserModel } from "./user.interfaces";
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<IUser, UserModel, IUserMethods>(
   {
     name: {
       firstName: {
@@ -36,6 +36,11 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-const User = model<IUser>("user", userSchema);
+//Adding instance Methods
+userSchema.method("getFullName", function getFullName() {
+  return `${this.name.firstName} ${this.name.lastName}`;
+});
+
+const User = model<IUser, UserModel>("user", userSchema);
 
 export default User;

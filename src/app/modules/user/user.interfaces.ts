@@ -1,3 +1,5 @@
+import { Model } from "mongoose";
+
 export interface IUser {
   name: {
     firstName: string;
@@ -7,3 +9,9 @@ export interface IUser {
   email?: string;
   avatar?: string;
 }
+
+export interface IUserMethods {
+  getFullName: () => string;
+}
+
+export type UserModel = Model<IUser, {}, IUserMethods>;
