@@ -41,6 +41,11 @@ userSchema.method("getFullName", function getFullName() {
   return `${this.name.firstName} ${this.name.lastName}`;
 });
 
+userSchema.static("getAllFemaleUsers", async function getAllFemaleUsers() {
+  const femaleUsers = await this.find({ gender: "female" });
+  return femaleUsers;
+});
+
 const User = model<IUser, UserModel>("user", userSchema);
 
 export default User;

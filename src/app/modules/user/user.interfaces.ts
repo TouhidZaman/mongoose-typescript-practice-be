@@ -14,4 +14,10 @@ export interface IUserMethods {
   getFullName: () => string;
 }
 
-export type UserModel = Model<IUser, {}, IUserMethods>;
+// If we only use instance methods
+// export type UserModel = Model<IUser, {}, IUserMethods>;
+
+// to use both statics and methods
+export interface UserModel extends Model<IUser, {}, IUserMethods> {
+  getAllFemaleUsers: () => Promise<(IUser & IUserMethods)[]>;
+}

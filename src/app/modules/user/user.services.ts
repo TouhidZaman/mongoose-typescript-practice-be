@@ -12,3 +12,11 @@ export const createUserToBD = async (
 
   return result;
 };
+
+export const getFemaleUsersFromDB = async (): Promise<
+  (IUser & IUserMethods)[]
+> => {
+  // getAllFemaleUsers static method is available after adding it to the useSchema
+  const femaleUsers = await User.getAllFemaleUsers();
+  return femaleUsers;
+};
