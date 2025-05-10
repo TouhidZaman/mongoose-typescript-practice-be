@@ -37,7 +37,7 @@ A boilerplate Express server using **TypeScript**, **MongoDB (Dockerized)**, and
     ```
 1. **Create and Setup MongoDB (Optional if you have docker installed or set appropriate MONGODB_URI)**
    ```sh
-   docker-compose up -d
+   docker compose up -d
    ```
 
 6. **Run Dev Server**
